@@ -6,12 +6,12 @@ const nextConfig = {
 
 module.exports = nextConfig
 
-module.exports = {
-	async redirects() {
-		return [{
-			source: '/',
-			destination: '/api/coffee',
-			permanent: false,
-		}, ]
-	},
-}
+// module.exports = {
+// 	// async redirects() {
+// 	// 	return [{
+// 	// 		source: '/',
+// 	// 		destination: '/api/coffee',
+// 	// 		permanent: false,
+// 	// 	}, ]
+// 	// },
+// }
