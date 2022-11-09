@@ -5,7 +5,7 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export const authOptions = {
+export default NextAuth({
 	adapter: PrismaAdapter(prisma),
 	providers: [
 		GithubProvider({
@@ -13,6 +13,10 @@ export const authOptions = {
 			clientSecret: process.env.GITHUB_SECRET as string,
 		}),
 	],
-}
-
-export default NextAuth(authOptions)
+	callbacks: {
+		async session({ session, token, user }) {
+			console.log(`Inside of session callback`)
+			return { ...session, user: { ...session.user, ...user } }
+		},
+	},
+})
